@@ -287,8 +287,10 @@
                                           "details": "Click the View Path icon <img src='http://ot4i.github.io/ot4i.tutorials//dist/images/icons/iib/viewPath.png' alt='' /> to see the path which the message took through the flow and see the message content on the path."
                                         },
                     				    {
-                                            "details": "Click on the message icon on the last connection in the flow and you should see the final output message carries return data from both of the back-end message flows which has been changed to upper case:"
-				                        }
+                                            "details": "Click on the message icon on the last connection in the flow and you should see the final output message carries return data from both of the back-end message flows which has been changed to upper case. The final output message on the output queue <span class='resource'>AGG.REPLY</span> should look similar to this:"
+				                        },				                                                                {
+                                          "details": "<span class='resource'>&lt;NS1:OverallOutputMessage xmlns:NS1=&quot;http://www.ibm.com/Example&quot;&gt;&lt;NS1:ResponseBackend1>DATA FOR BACKEND1&lt;/NS1:ResponseBackend1&gt;&lt;NS1:ResponseBackend2>DATA FOR BACKEND2&lt;/NS1:ResponseBackend2&gt;&lt;/NS1:OverallOutputMessage&gt;</span>"
+                                        }
                                     ]
                                     }
                                     }
@@ -296,7 +298,7 @@
                             }
                         },
 			{
-			    "section": "This tutorial showed the Aggregation nodes orchestrating a fan-out and an associated fan-in of messages using MQ."
+			    "section": "This tutorial has shown the Aggregation nodes orchestrating a fan-out and an associated fan-in of messages using MQ."
 			}
                     ]
                 },
@@ -307,8 +309,8 @@
 					[
                         {
                             "title": "Knowledge Center link to ",
-                            "description": "Developing integration solutions by using applications",
-                            "link": "com.ibm.etools.mft.doc/bi12002_.htm"
+                            "description": "Message Flow Aggregation",
+                            "link": "com.ibm.etools.mft.doc/ac00660_.htm"
                         },
                         {
                             "title": "Knowledge Center link to ",
