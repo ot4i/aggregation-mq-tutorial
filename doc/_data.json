@@ -2,7 +2,7 @@
     "version": "0.1",
     "pageContent": 
 	{
-        "_comments": "KAFKA object that contains data for page labels, buttons, etc.",
+        "_comments": "object that contains data for page labels, buttons, etc.",
         "navItems": 
 		{
             "_common": 
@@ -32,8 +32,8 @@
 	{
         "_common": 
 		{
-            "name": "Using the Aggregation nodes in a message flow, with MQ transport to back-end services",
-            "shortDescription": "Learn how to use the Aggregation nodes to fan-out and fan-in messages over MQ.",
+            "name": "Aggregation nodes using MQ nodes with back-end services",
+            "shortDescription": "Learn how to use the Aggregation nodes to fan-out and fan-in messages using MQ nodes.",
             "durationText": "This tutorial takes approximately",
             "durationTime": "5 minutes",
             "_resourceToOpenComment": "The ID of the first resource to open when the user imports the tutorial. Resource IDs are defined in the repo_metadata.json Tutorials listing on ot4i.",
