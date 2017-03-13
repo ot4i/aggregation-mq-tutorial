@@ -24,13 +24,13 @@
 		
 		<title>IBM Integration Bus V10 Tutorial</title>
 
-    	<link rel="stylesheet" href="http://ot4i.github.io/iib-tutorials/css/main.css" />
-		<link rel="stylesheet" href="http://ot4i.github.io/iib-tutorials/css/app.css" />
+    	<link rel="stylesheet" href="https://ot4i.github.io/iib-tutorials/css/main.css" />
+		<link rel="stylesheet" href="https://ot4i.github.io/iib-tutorials/css/app.css" />
     	
-		<script src="http://ot4i.github.io/iib-tutorials/js/json2.js"></script>
-		<script src="http://ot4i.github.io/iib-tutorials/js/js2java.js"></script>
-		<script src="http://ot4i.github.io/iib-tutorials/js/js2java_steps.js"></script>
-		<script src="http://ot4i.github.io/iib-tutorials/js/vendor/modernizr.js"></script>
+		<script src="https://ot4i.github.io/iib-tutorials/js/json2.js"></script>
+		<script src="https://ot4i.github.io/iib-tutorials/js/js2java.js"></script>
+		<script src="https://ot4i.github.io/iib-tutorials/js/js2java_steps.js"></script>
+		<script src="https://ot4i.github.io/iib-tutorials/js/vendor/modernizr.js"></script>
 	</head>
 <!-- header::End -->
 <!-- body::Start -->
@@ -119,7 +119,7 @@
 					<div class="small-2 medium-2 large-2 columns">
 					
 					
-					<h4 class="tkaction"><a href="javascript:;" onclick="importArtifacts(); openResource('MainFlow')"> Import <img class="icon-image" src="http://ot4i.github.io/iib-tutorials/images/icons/ibmdesign/back-right-previous_128-orange.png"></a></h4>
+					<h4 class="tkaction"><a href="javascript:;" onclick="importArtifacts(); openResource('MainFlow')"> Import <img class="icon-image" src="https://ot4i.github.io/iib-tutorials/images/icons/ibmdesign/back-right-previous_128-orange.png"></a></h4>
 										
 				    </div>
 					
@@ -242,14 +242,14 @@
 									<ol>
 									
 									
-										<li> Open <span class="resource">AggregationMQ_FanIn.msgflow</span>.
+										<li> Open <span class="resource">AggregationMQ_FanIn.msgflow</span> from inside the <span class="resource">AggregationMQ</span> application.
 										
 										
 											
 											<ul>
 											
 												
-													<li> Click the Flow Exerciser icon <img src="http://ot4i.github.io/ot4i.tutorials//dist/images/icons/iib/startFlowExerciser.png" alt> to start testing the flow</li>
+													<li> Click the Flow Exerciser icon <img src="https://ot4i.github.io/ot4i.tutorials//dist/images/icons/iib/startFlowExerciser.png" alt> to start testing the flow</li>
 												
 											
 											</ul>
@@ -257,16 +257,16 @@
 										
 										</li>
 									
-										<li> Open <span class="resource">AggregationMQ_FanOut.msgflow</span>.
+										<li> Open <span class="resource">AggregationMQ_FanOut.msgflow</span> from inside the <span class="resource">AggregationMQ</span> application.
 										
 										
 											
 											<ul>
 											
 												
-													<li> Click the Flow Exerciser icon <img src="http://ot4i.github.io/ot4i.tutorials//dist/images/icons/iib/startFlowExerciser.png" alt> to start testing the flow</li>
+													<li> Click the Flow Exerciser icon <img src="https://ot4i.github.io/ot4i.tutorials//dist/images/icons/iib/startFlowExerciser.png" alt> to start testing the flow</li>
 												
-													<li> Click the Send Message icon <img src="http://ot4i.github.io/ot4i.tutorials/dist/images/icons/iib/sendMessage.png" alt>.</li>
+													<li> Click the Send Message icon <img src="https://ot4i.github.io/ot4i.tutorials/dist/images/icons/iib/sendMessage.png" alt>.</li>
 												
 													<li> Select the saved message which has been provided, named <span class="resource">InputMessage1</span>, and click Send. Your message is sent to the MQInput node.</li>
 												
@@ -287,9 +287,9 @@
 											<ul>
 											
 												
-													<li> Click the View Path icon <img src="http://ot4i.github.io/ot4i.tutorials//dist/images/icons/iib/viewPath.png" alt> to see the path which the message took through the flow and see the message content on the path.</li>
+													<li> Click the View Path icon <img src="https://ot4i.github.io/ot4i.tutorials//dist/images/icons/iib/viewPath.png" alt> to see the path which the message took through the flow and see the message content on the path.</li>
 												
-													<li> Click on the message icon on the last connection in the flow and you should see the final output message carries return data from both of the back-end message flows which has been changed to upper case. The final output message on the output queue <span class="resource">AGG.REPLY</span> should look similar to this:</li>
+													<li> Click on the message icon on the last connection in the flow and you should see the final output message carries return data from both of the back-end message flows which has been changed to upper case. The final output message on the output queue <span class="resource">AGG.OUT</span> should look similar to this:</li>
 												
 													<li> <span class="resource">&lt;NS1:OverallOutputMessage xmlns:NS1=&quot;http://www.ibm.com/Example&quot;&gt;&lt;NS1:ResponseBackend1>DATA FOR BACKEND1&lt;/NS1:ResponseBackend1&gt;&lt;NS1:ResponseBackend2>DATA FOR BACKEND2&lt;/NS1:ResponseBackend2&gt;&lt;/NS1:OverallOutputMessage&gt;</span></li>
 												
@@ -334,7 +334,7 @@
 					
 					
 					
-					<h4 class="tkaction"><a href="javascript:;" onclick="cleanUp()" title="Clean up and remove any changes in your workspace made by the tutorial."> Clean Up <img class="icon-image" src="http://ot4i.github.io/iib-tutorials/images/icons/ibmdesign/close-cancel-error_128-red.png"></a></h4>
+					<h4 class="tkaction"><a href="javascript:;" onclick="cleanUp()" title="Clean up and remove any changes in your workspace made by the tutorial."> Clean Up <img class="icon-image" src="https://ot4i.github.io/iib-tutorials/images/icons/ibmdesign/close-cancel-error_128-red.png"></a></h4>
 				    
 					
 				    </div>
@@ -343,9 +343,9 @@
 			</div> <!-- tab-content -->
 		</div> <!-- columns -->
 	  </div> <!-- row --></body>
-		<script src="http://ot4i.github.io/iib-tutorials/js/vendor/jquery.js"></script>
-		<script src="http://ot4i.github.io/iib-tutorials/js/vendor/foundation.min.js"></script>
-		<script src="http://ot4i.github.io/iib-tutorials/js/main.js"></script>
+		<script src="https://ot4i.github.io/iib-tutorials/js/vendor/jquery.js"></script>
+		<script src="https://ot4i.github.io/iib-tutorials/js/vendor/foundation.min.js"></script>
+		<script src="https://ot4i.github.io/iib-tutorials/js/main.js"></script>
 	</body>
 <!-- body::End -->
 
