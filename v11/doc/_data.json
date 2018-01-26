@@ -1,0 +1,337 @@
+{
+    "version": "0.1",
+    "pageContent": 
+	{
+        "_comments": "object that contains data for page labels, buttons, etc.",
+        "navItems": 
+		{
+            "_common": 
+			{
+                "buttonBackToGallery": 
+				{
+                    "name": "Back To Gallery",
+					"method": "backToGallery()",
+					"idName": "backToGallery"	
+                },
+                "buttonStartTutorial": 
+				{
+                    "name": "Start Tutorial",
+					"method": "startTutorialFromDetailsScreen()",
+					"idName": "startTutorial"
+                },
+				"buttonViewDetails": 
+				{
+                    "name": "View Details",
+					"method": "viewDetails()",
+					"idName": "stepsViewDetails"	
+                }
+            }
+        }
+    },
+    "tutorial": 
+	{
+        "_common": 
+		{
+            "name": "Aggregation nodes using MQ nodes with back-end services",
+            "shortDescription": "Learn how to use the Aggregation nodes to fan-out and fan-in messages using MQ nodes.",
+            "durationText": "This tutorial takes approximately",
+            "durationTime": "5 minutes",
+            "_resourceToOpenComment": "The ID of the first resource to open when the user imports the tutorial. Resource IDs are defined in the repo_metadata.json Tutorials listing on ot4i.",
+            "resourceToOpen": "MainFlow",
+            "helpLink": 
+			{
+                "text": "IBM Knowledge Center",
+                "link": "/com.ibm.etools.msgbroker.helphome.doc/help_home_msgbroker.htm"
+            }
+        },
+        "pageDetails": 
+		{
+            "topicsName": "Tutorial Topics",
+            "_topicListComment": "A short list of product concepts or tasks demonstrated by this tutorial",
+            "topicList": 
+			[
+                {
+                    "title": "Aggregation nodes"
+                }
+            ],
+            "outcomesName": "Learning outcomes",
+            "_outcomesComment": "A description of what the user will have learned or accomplished by running this tutorial.",
+            "outcomeList": 
+			[
+                {
+                    "title": "Use IBM Integration Bus to fan-out requests over MQ and aggregate their responses."
+                }
+            ],
+            "summary": 
+			{
+                "overviewName": "OVERVIEW",
+                "_overviewComment": "A short description of what happens in this tutorial, and an optional short explanation of the IIB concepts used in this tutorial if necessary for context. What background knowledge must the user have for this to make sense?",
+                "sections": 
+				[
+                    {
+                        "section": "This tutorial demonstrates a simple message flow that receives an MQ message, and fans-out two separate MQ request messages (after simple transformations using a Mapping node). Two separate example back-end message flows are provided which read these MQ requests and reply to a common response queue. Finally, a separate fan-in message flow aggregates the two response messages."
+                    },
+                    {
+                        "section": "This tutorial requires an IIB node which is associated with a local queue manager."
+                    },
+                    {
+                        "section": "In IBM Integration Bus, an application is a container for all the resources that are required to create a solution. This tutorial provides three applications - one to hold the fan-out and fan-in aggregation flows, and two other applications for the back-end MQ flows."
+                    }
+                ]
+            },
+			"helpLinks": 
+			{
+				"_helpLinksComment": "Helplinks that have a type:web attribute are rendered as web links. Otherwise, links are assumed to be to embedded Help topics in the Knowledge Center.",
+				"title": "Find out more",
+				"details": 
+				[
+					{
+						"title": "Knowledge Center link to ",
+						"description": "Developing integration solutions by using applications",
+						"link": "com.ibm.etools.mft.doc/bi12002_.htm",
+						"type": "help"
+					}
+				]
+			}
+        },
+        "pageSteps": 
+		{
+            "create": 
+			{
+                "overview": 
+				{
+                    "name": "Create",
+                    "heading": "Import projects",
+                    "_createComment": "A description of what will happen when the user clicks Import.",
+                    "sections": 
+					[
+                        {
+                            "section": "When you click Import, three applications will be created in your workspace: <span class='application'>AggregationMQ</span>, <span class='application'>AggregationMQBackend1</span> and <span class='application'>AggregationMQBackend2</span>."
+                        },
+                        {
+                            "section": "<span class='application'>AggregationMQ</span> provides two message flows AggregationMQ_FanOut and AggregationMQ_FanIn which use MQ nodes to send messages to and receive messages from the back-end message flows." 
+                        },
+                        {
+                            "section": "<span class='application'>AggregationMQBackend1</span> provides a single message flow with MQInput, Mapping and MQOutput nodes. The application contains an XML schema describing the input and output formats."
+                        },
+                        {
+                            "section": "<span class='application'>AggregationMQBackend2</span> provides a single message flow with MQInput, Mapping and MQOutput nodes. The application contains an XML schema describing the input and output formats."
+                        },
+			{
+			    "section": "For simplicity, all three applications can be deployed to the same integration server. If you wish, you could deploy AggregationMQBackEnd1 and AggregationBackEnd2 to different integration servers (assuming you take account of this with your MQ queue manager configuration)."
+                        },
+			{
+			    "section": "Once you import the tutorial, the provided applications are ready to be deployed and tested. Before you do this, you need to create the required MQ queues, as described on the Prepare tab."
+			}
+                    ]
+                },
+                "helpLinks": 
+				{
+                    "title": "Find out more",
+                    "details": 
+					[
+                        {
+                            "title": "Knowledge Center link to ",
+                            "description": "Developing integration solutions by using applications",
+                            "link": "com.ibm.etools.mft.doc/bi12002_.htm"
+                        }
+                    ]
+                },
+                "actions": 
+				{
+                    "title": "Create Actions",
+                    "details": 
+					[
+                        {
+                            "name": "Import",
+                            "method": "importArtifacts()"
+                        }
+                    ]
+                }
+            },
+            "prepare": 
+			{
+                "overview": 
+				{
+                    "name": "Prepare",
+                    "heading": "Create queues",
+                    "_prepareComment": "A description of what just happened when the user clicked Import, and what will happen when the user clicks Deploy.",
+                    "sections": 
+		     [
+                {
+                     "section":"The solution uses WebSphere MQ queues to route messages between the applications.",
+                     "steps":{
+                        "type":"ordered",
+                        "details":[
+                           {
+                              "details":"Create the default IBM Integration Bus queues in WebSphere MQ by completing the following steps:",
+                              "substeps":{
+                                 "type":"ordered",
+                                 "details":[
+                                    {
+                                       "details":"Open the IBM Integration Console."
+                                    },
+                                    {
+                                       "details":"In the console window, type the following command:<br><code>server\\sample\\wmq\\iib_createqueues <span class='varname'>qmgr</span></code><br>where<br><span class='varname'>qmgr</span> is the queue manager name."
+                                    }
+                                 ]
+                              }
+                           },
+                           {
+                              "details":"Create the queues used by the MQ nodes in this tutorial by completing the following steps:",
+                              "substeps":{
+                                 "type":"ordered",
+                                 "details":[
+                                    {
+                                       "details":"In the console window, type the following command:<br><code><span class='cmdname'>runmqsc</span> <span class='varname'> qmgr &lt; {WorkspacePath}/AggregationMQ/create_queues.mqsc</span></code><br>where<br><span class='varname'>qmgr</span> is the queue manager name and <span class='varname'>WorkspacePath</span> is the location of your current Toolkit workspace."
+                                    }
+                                 ]
+                              }
+                           },
+                           {
+                              "details":"Associate the default integration node with the queue manager by completing the following steps:",
+                              "substeps":{
+                                 "type":"ordered",
+                                 "details":[
+                                    {
+                                       "details":"In the console window, stop the default integration node by typing the following command:<br><code><span class='cmdname'>mqsistop</span> -i <span class='varname'>TESTNODE_userid</span></code>"
+                                    },
+                                    {
+                                       "details":"Associate the queue manager with the default integration node, <span class='varname'>TESTNODE_userid</span> by typing the following command:<br><code><span class='cmdname'>mqsichangebroker</span> <span class='varname'>TESTNODE_userid</span> -q <span class='varname'>qmgr</span></code><br>where<br><span class='varname'>qmgr</span> is the queue manager name"
+                                    },
+                                    {
+                                       "details":"Start the default integration node by typing the following command:<br><code><span class='cmdname'>mqsistart</span> <span class='varname'>TESTNODE_userid</span></code>"
+                                    }
+                                 ]
+                              }
+                           }
+                        ]
+                     }
+                  }
+             ]
+                },
+                "helpLinks": 
+				{
+                }
+            },
+            "run": 
+			{
+                "overview": 
+				{
+                    "name": "Run",
+                    "heading": "",
+                    "_runComment": "The full steps for the user to run through the tutorial. Use 'sections' to render paragraphs, 'steps' with a type of 'ordered' or 'unordered' to render HTML lists, and 'substeps' to render nested lists.",
+                "sections":[
+                            {
+                                "section":"<h4>Deploy the back-end MQ applications</h4>",
+                                "steps":{
+                                    "type":"ordered",
+                                    "details":[
+                                            {
+                                            "details":"Deploy the <span class='application'>AggregationMQBackend1</span> application, by dragging and dropping it on to the default integration server."
+                                            },
+                                            {
+                                            "details":"Deploy the <span class='application'>AggregationMQBackend2</span> application, by dragging and dropping it on to the default integration server."
+                                            }
+                                    ]
+                                }
+                            },
+                            {
+                                "section": "<h4>Use the Flow Exerciser to test the tutorial scenario",
+                                "steps": {
+                                    "type": "ordered",
+                                    "details": [
+                                            {
+                                            "details": "Open <span class='resource'>AggregationMQ_FanIn.msgflow</span>.",
+                                            "substeps":{
+                                                "type": "unordered",
+                                                "details": 
+								                [
+                                                    {
+                                                    "details": "Click the Flow Exerciser icon <img src='http://ot4i.github.io/ot4i.tutorials//dist/images/icons/iib/startFlowExerciser.png' alt='' /> to start testing the flow"
+                                                    }
+                                                ]
+                                            }
+                                    },
+                                    {
+                                        "details": "Open <span class='resource'>AggregationMQ_FanOut.msgflow</span>.",
+                                        "substeps":{
+                                        "type": "unordered",
+                                        "details": 
+								        [
+                                        {
+                                          "details": "Click the Flow Exerciser icon <img src='http://ot4i.github.io/ot4i.tutorials//dist/images/icons/iib/startFlowExerciser.png' alt='' /> to start testing the flow"
+                                        },
+                                        {
+                                            "details": "Click the Send Message icon <img src='http://ot4i.github.io/ot4i.tutorials/dist/images/icons/iib/sendMessage.png' alt='' />."
+                                        },
+                                        {
+                                            "details": "Select the saved message which has been provided, named <span class='resource'>InputMessage1</span>, and click Send. Your message is sent to the MQInput node."
+                				        },
+				                        {
+                                            "details": "The pop-up dialog will show the message has been sent and will then be reporting <span class='resource'>Listening for response</span>, but in this example there is no response message, so just click <span class='resource'>Close</span>"
+				                        },
+                    				    {
+                                            "details": "After you close the dialog, the paths taken through the messageflow are highlighted. Click on the message icon on each connection to see how the tree has been updated by each node."
+				                        }
+                                        ]
+                                        }
+                                    },
+                                    {
+                                    "details": "Return to <span class='resource'>AggregationMQ_FanIn.msgflow</span>.",
+                                    "substeps":{
+                                    "type": "unordered",
+                                    "details": 
+								    [
+                                        {
+                                          "details": "Click the View Path icon <img src='http://ot4i.github.io/ot4i.tutorials//dist/images/icons/iib/viewPath.png' alt='' /> to see the path which the message took through the flow and see the message content on the path."
+                                        },
+                    				    {
+                                            "details": "Click on the message icon on the last connection in the flow and you should see the final output message carries return data from both of the back-end message flows which has been changed to upper case. The final output message on the output queue <span class='resource'>AGG.REPLY</span> should look similar to this:"
+				                        },				                                                                {
+                                          "details": "<span class='resource'>&lt;NS1:OverallOutputMessage xmlns:NS1=&quot;http://www.ibm.com/Example&quot;&gt;&lt;NS1:ResponseBackend1>DATA FOR BACKEND1&lt;/NS1:ResponseBackend1&gt;&lt;NS1:ResponseBackend2>DATA FOR BACKEND2&lt;/NS1:ResponseBackend2&gt;&lt;/NS1:OverallOutputMessage&gt;</span>"
+                                        }
+                                    ]
+                                    }
+                                    }
+                                ]
+                            }
+                        },
+			{
+			    "section": "This tutorial has shown the Aggregation nodes orchestrating a fan-out and an associated fan-in of messages using MQ."
+			}
+                    ]
+                },
+                "helpLinks": 
+				{
+                    "title": "Find out more",
+                    "details": 
+					[
+                        {
+                            "title": "Knowledge Center link to ",
+                            "description": "Message Flow Aggregation",
+                            "link": "com.ibm.etools.mft.doc/ac00660_.htm"
+                        },
+                        {
+                            "title": "Knowledge Center link to ",
+                            "description": "Testing your message flow by using the Flow exerciser",
+                            "link": "com.ibm.etools.mft.doc/rt26110_.htm"
+                        }
+                    ]
+                },
+		"exits": 
+		{
+			"title": "Run Exits",
+			"details": 
+			[
+				{
+					"name": "Clean Up",
+					"description": "Clean up and remove any changes in your workspace made by the tutorial.",
+					"method": "cleanUp()"
+				}
+			]
+		}
+            }
+        }
+    }
+}
