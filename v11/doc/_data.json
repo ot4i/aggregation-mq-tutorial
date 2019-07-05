@@ -59,23 +59,23 @@
             "outcomeList": 
 			[
                 {
-                    "title": "Use IBM Integration Bus to fan-out requests over MQ and aggregate their responses."
+                    "title": "Use IBM App Connect Enterprise to fan-out requests over MQ and aggregate their responses."
                 }
             ],
             "summary": 
 			{
                 "overviewName": "OVERVIEW",
-                "_overviewComment": "A short description of what happens in this tutorial, and an optional short explanation of the IIB concepts used in this tutorial if necessary for context. What background knowledge must the user have for this to make sense?",
+                "_overviewComment": "A short description of what happens in this tutorial, and an optional short explanation of the ACE concepts used in this tutorial if necessary for context. What background knowledge must the user have for this to make sense?",
                 "sections": 
 				[
                     {
                         "section": "This tutorial demonstrates a simple message flow that receives an MQ message, and fans-out two separate MQ request messages (after simple transformations using a Mapping node). Two separate example back-end message flows are provided which read these MQ requests and reply to a common response queue. Finally, a separate fan-in message flow aggregates the two response messages."
                     },
                     {
-                        "section": "This tutorial requires an IIB node which is associated with a local queue manager."
+                        "section": "This tutorial requires an ACE integration node (or standalone server) which is associated with a local queue manager."
                     },
                     {
-                        "section": "In IBM Integration Bus, an application is a container for all the resources that are required to create a solution. This tutorial provides three applications - one to hold the fan-out and fan-in aggregation flows, and two other applications for the back-end MQ flows."
+                        "section": "In IBM App Connect Enterprise, an application is a container for all the resources that are required to create a solution. This tutorial provides three applications - one to hold the fan-out and fan-in aggregation flows, and two other applications for the back-end MQ flows."
                     }
                 ]
             },
@@ -118,7 +118,7 @@
                             "section": "<span class='application'>AggregationMQBackend2</span> provides a single message flow with MQInput, Mapping and MQOutput nodes. The application contains an XML schema describing the input and output formats."
                         },
 			{
-			    "section": "For simplicity, all three applications can be deployed to the same integration server. If you wish, you could deploy AggregationMQBackEnd1 and AggregationBackEnd2 to different integration servers (assuming you take account of this with your MQ queue manager configuration)."
+			    "section": "For simplicity, all three applications can be deployed to the same integration server. If you wish, you could deploy AggregationMQBackEnd1 and AggregationMQBackEnd2 to different integration servers (assuming you take account of this with your MQ queue manager configuration)."
                         },
 			{
 			    "section": "Once you import the tutorial, the provided applications are ready to be deployed and tested. Before you do this, you need to create the required MQ queues, as described on the Prepare tab."
@@ -159,20 +159,20 @@
                     "sections": 
 		     [
                 {
-                     "section":"The solution uses WebSphere MQ queues to route messages between the applications.",
+                     "section":"The solution uses IBM MQ queues to route messages between the applications.",
                      "steps":{
                         "type":"ordered",
                         "details":[
                            {
-                              "details":"Create the default IBM Integration Bus queues in WebSphere MQ by completing the following steps:",
+                              "details":"Create the default App Connect Enterprise queues in IBM MQ by completing the following steps:",
                               "substeps":{
                                  "type":"ordered",
                                  "details":[
                                     {
-                                       "details":"Open the IBM Integration Console."
+                                       "details":"Open the IBM App Connect Enterprise Console. If you don't already have one, create and start a queue manager:<br><code><span class='cmdname'>crtmqm</span> <span class='varname'> qmgr</span></code><br><code><span class='cmdname'>strmqm</span> <span class='varname'> qmgr</span></code>"
                                     },
                                     {
-                                       "details":"In the console window, type the following command:<br><code>server\\sample\\wmq\\iib_createqueues <span class='varname'>qmgr</span></code><br>where<br><span class='varname'>qmgr</span> is the queue manager name."
+                                       "details":"Next create the queues by typing the following command:<br><code>server\\sample\\wmq\\iib_createqueues <span class='varname'>qmgr</span></code><br>where<br><span class='varname'>qmgr</span> is the queue manager name."
                                     }
                                  ]
                               }
@@ -189,18 +189,18 @@
                               }
                            },
                            {
-                              "details":"Associate the default integration node with the queue manager by completing the following steps:",
+                              "details":"Create an integration node which is associated with the above queue manager by completing the following steps:",
                               "substeps":{
                                  "type":"ordered",
                                  "details":[
                                     {
-                                       "details":"In the console window, stop the default integration node by typing the following command:<br><code><span class='cmdname'>mqsistop</span> -i <span class='varname'>TESTNODE_userid</span></code>"
+                                       "details":"In the console window, create an integration node by typing the following command:<br><code><span class='cmdname'>mqsicreatebroker</span> <span class='varname'>TESTNODE</span> -q <span class='varname'>qmgr</span></code>"
+                                    },
+									{
+                                       "details":"Start the integration node by typing the following command:<br><code><span class='cmdname'>mqsistart</span> <span class='varname'>TESTNODE</span></code>"
                                     },
                                     {
-                                       "details":"Associate the queue manager with the default integration node, <span class='varname'>TESTNODE_userid</span> by typing the following command:<br><code><span class='cmdname'>mqsichangebroker</span> <span class='varname'>TESTNODE_userid</span> -q <span class='varname'>qmgr</span></code><br>where<br><span class='varname'>qmgr</span> is the queue manager name"
-                                    },
-                                    {
-                                       "details":"Start the default integration node by typing the following command:<br><code><span class='cmdname'>mqsistart</span> <span class='varname'>TESTNODE_userid</span></code>"
+                                       "details":"Create an integration server associated with the integration node by typing the following command:<br><code><span class='cmdname'>mqsicreateexecutiongroup</span> <span class='varname'>TESTNODE</span> -e <span class='varname'>default</span></code><br>where<br><span class='varname'>qmgr</span> is the queue manager name."
                                     }
                                  ]
                               }
@@ -228,10 +228,10 @@
                                     "type":"ordered",
                                     "details":[
                                             {
-                                            "details":"Deploy the <span class='application'>AggregationMQBackend1</span> application, by dragging and dropping it on to the default integration server."
+                                            "details":"Deploy the <span class='application'>AggregationMQBackend1</span> application, by dragging and dropping it on to the integration server (which we named default earlier in the tutorial)."
                                             },
                                             {
-                                            "details":"Deploy the <span class='application'>AggregationMQBackend2</span> application, by dragging and dropping it on to the default integration server."
+                                            "details":"Deploy the <span class='application'>AggregationMQBackend2</span> application, by dragging and dropping it on to the integration server (which we named default earlier in the tutorial)."
                                             }
                                     ]
                                 }
@@ -287,7 +287,7 @@
                                           "details": "Click the View Path icon <img src='http://ot4i.github.io/ot4i.tutorials//dist/images/icons/iib/viewPath.png' alt='' /> to see the path which the message took through the flow and see the message content on the path."
                                         },
                     				    {
-                                            "details": "Click on the message icon on the last connection in the flow and you should see the final output message carries return data from both of the back-end message flows which has been changed to upper case. The final output message on the output queue <span class='resource'>AGG.REPLY</span> should look similar to this:"
+                                            "details": "Click on the message icon on the last connection in the flow and you should see the final output message carries return data from both of the back-end message flows which has been changed to upper case. The final output message on the output queue <span class='resource'>AGG.OUT</span> should look similar to this:"
 				                        },				                                                                {
                                           "details": "<span class='resource'>&lt;NS1:OverallOutputMessage xmlns:NS1=&quot;http://www.ibm.com/Example&quot;&gt;&lt;NS1:ResponseBackend1>DATA FOR BACKEND1&lt;/NS1:ResponseBackend1&gt;&lt;NS1:ResponseBackend2>DATA FOR BACKEND2&lt;/NS1:ResponseBackend2&gt;&lt;/NS1:OverallOutputMessage&gt;</span>"
                                         }
