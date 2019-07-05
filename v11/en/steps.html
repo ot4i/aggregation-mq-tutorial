@@ -22,7 +22,7 @@
 		<meta name="robots" content="index,follow">
 		<meta name="source" content="IBM Integration Bus V10 Tutorial" /> 
 		
-		<title>IBM Integration Bus V10 Tutorial</title>
+		<title>IBM App Connect Enterprise V11 Tutorial</title>
 
     	<link rel="stylesheet" href="https://ot4i.github.io/iib-tutorials/css/main.css" />
 		<link rel="stylesheet" href="https://ot4i.github.io/iib-tutorials/css/app.css" />
@@ -94,7 +94,7 @@
 								<p> <span class="application">AggregationMQBackend2</span> provides a single message flow with MQInput, Mapping and MQOutput nodes. The application contains an XML schema describing the input and output formats. </p>
 								
 							
-								<p> For simplicity, all three applications can be deployed to the same integration server. If you wish, you could deploy AggregationMQBackEnd1 and AggregationBackEnd2 to different integration servers (assuming you take account of this with your MQ queue manager configuration). </p>
+								<p> For simplicity, all three applications can be deployed to the same integration server. If you wish, you could deploy AggregationMQBackEnd1 and AggregationMQBackEnd2 to different integration servers (assuming you take account of this with your MQ queue manager configuration). </p>
 								
 							
 								<p> Once you import the tutorial, the provided applications are ready to be deployed and tested. Before you do this, you need to create the required MQ queues, as described on the Prepare tab. </p>
@@ -132,23 +132,23 @@
 						  	<h4>Create queues</h4>
 						    
 						    
-								<p> The solution uses WebSphere MQ queues to route messages between the applications. </p>
+								<p> The solution uses IBM MQ queues to route messages between the applications. </p>
 								
 								
 									
 									<ol>
 									
 									
-										<li> Create the default IBM Integration Bus queues in WebSphere MQ by completing the following steps:
+										<li> Create the default App Connect Enterprise queues in IBM MQ by completing the following steps:
 										
 										
 											
 											<ol>
 											
 												
-													<li> Open the IBM Integration Console.</li>
+													<li> Open the IBM App Connect Enterprise Console. If you don't already have one, create and start a queue manager:<br><code><span class="cmdname">crtmqm</span> <span class="varname"> qmgr</span></code><br><code><span class="cmdname">strmqm</span> <span class="varname"> qmgr</span></code></li>
 												
-													<li> In the console window, type the following command:<br><code>server\sample\wmq\iib_createqueues <span class="varname">qmgr</span></code><br>where<br><span class="varname">qmgr</span> is the queue manager name.</li>
+													<li> Next create the queues by typing the following command:<br><code>server\sample\wmq\iib_createqueues <span class="varname">qmgr</span></code><br>where<br><span class="varname">qmgr</span> is the queue manager name.</li>
 												
 											
 											</ol>
@@ -171,18 +171,18 @@
 										
 										</li>
 									
-										<li> Associate the default integration node with the queue manager by completing the following steps:
+										<li> Create an integration node which is associated with the above queue manager by completing the following steps:
 										
 										
 											
 											<ol>
 											
 												
-													<li> In the console window, stop the default integration node by typing the following command:<br><code><span class="cmdname">mqsistop</span> -i <span class="varname">TESTNODE_userid</span></code></li>
+													<li> In the console window, create an integration node by typing the following command:<br><code><span class="cmdname">mqsicreatebroker</span> <span class="varname">TESTNODE</span> -q <span class="varname">qmgr</span></code></li>
 												
-													<li> Associate the queue manager with the default integration node, <span class="varname">TESTNODE_userid</span> by typing the following command:<br><code><span class="cmdname">mqsichangebroker</span> <span class="varname">TESTNODE_userid</span> -q <span class="varname">qmgr</span></code><br>where<br><span class="varname">qmgr</span> is the queue manager name</li>
+													<li> Start the integration node by typing the following command:<br><code><span class="cmdname">mqsistart</span> <span class="varname">TESTNODE</span></code></li>
 												
-													<li> Start the default integration node by typing the following command:<br><code><span class="cmdname">mqsistart</span> <span class="varname">TESTNODE_userid</span></code></li>
+													<li> Create an integration server associated with the integration node by typing the following command:<br><code><span class="cmdname">mqsicreateexecutiongroup</span> <span class="varname">TESTNODE</span> -e <span class="varname">default</span></code><br>where<br><span class="varname">qmgr</span> is the queue manager name.</li>
 												
 											
 											</ol>
@@ -222,11 +222,11 @@
 									<ol>
 									
 									
-										<li> Deploy the <span class="application">AggregationMQBackend1</span> application, by dragging and dropping it on to the default integration server.
+										<li> Deploy the <span class="application">AggregationMQBackend1</span> application, by dragging and dropping it on to the integration server (which we named default earlier in the tutorial).
 										
 										</li>
 									
-										<li> Deploy the <span class="application">AggregationMQBackend2</span> application, by dragging and dropping it on to the default integration server.
+										<li> Deploy the <span class="application">AggregationMQBackend2</span> application, by dragging and dropping it on to the integration server (which we named default earlier in the tutorial).
 										
 										</li>
 									
@@ -289,7 +289,7 @@
 												
 													<li> Click the View Path icon <img src="https://ot4i.github.io/ot4i.tutorials//dist/images/icons/iib/viewPath.png" alt> to see the path which the message took through the flow and see the message content on the path.</li>
 												
-													<li> Click on the message icon on the last connection in the flow and you should see the final output message carries return data from both of the back-end message flows which has been changed to upper case. The final output message on the output queue <span class="resource">AGG.REPLY</span> should look similar to this:</li>
+													<li> Click on the message icon on the last connection in the flow and you should see the final output message carries return data from both of the back-end message flows which has been changed to upper case. The final output message on the output queue <span class="resource">AGG.OUT</span> should look similar to this:</li>
 												
 													<li> <span class="resource">&lt;NS1:OverallOutputMessage xmlns:NS1=&quot;http://www.ibm.com/Example&quot;&gt;&lt;NS1:ResponseBackend1>DATA FOR BACKEND1&lt;/NS1:ResponseBackend1&gt;&lt;NS1:ResponseBackend2>DATA FOR BACKEND2&lt;/NS1:ResponseBackend2&gt;&lt;/NS1:OverallOutputMessage&gt;</span></li>
 												
