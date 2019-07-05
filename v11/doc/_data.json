@@ -200,7 +200,7 @@
                                        "details":"Start the integration node by typing the following command:<br><code><span class='cmdname'>mqsistart</span> <span class='varname'>TESTNODE</span></code>"
                                     },
                                     {
-                                       "details":"Create an integration server associated with the integration node by typing the following command:<br><code><span class='cmdname'>mqsicreateexecutiongroup</span> <span class='varname'>TESTNODE</span> -e <span class='varname'>default</span></code><br>where<br><span class='varname'>qmgr</span> is the queue manager name."
+                                       "details":"Create an integration server associated with the integration node by typing the following command:<br><code><span class='cmdname'>mqsicreateexecutiongroup</span> <span class='varname'>TESTNODE</span> -e <span class='varname'>default</span></code>"
                                     }
                                  ]
                               }
