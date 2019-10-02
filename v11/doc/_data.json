@@ -260,7 +260,7 @@
                                         "details": 
 								        [
                                         {
-                                          "details": "Click the Flow Exerciser icon <img src='http://ot4i.github.io/ot4i.tutorials//dist/images/icons/iib/startFlowExerciser.png' alt='' /> to start testing the flow"
+                                          "details": "Click the Flow Exerciser icon <img src='http://ot4i.github.io/ot4i.tutorials//dist/images/icons/iib/startFlowExerciser.png' alt='' /> to start testing the flow. <strong>WARNING!</strong> When prompted, be careful not to redeploy the message flow as this would accidentally cause the Flow Exerciser to undo the last step and remove <span class='resource'>AggregationMQ_FanIn.msgflow</span> from test data capturing mode."
                                         },
                                         {
                                             "details": "Click the Send Message icon <img src='http://ot4i.github.io/ot4i.tutorials/dist/images/icons/iib/sendMessage.png' alt='' />."
