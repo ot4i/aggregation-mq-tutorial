@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+ 
+	
+<!-- header::Start -->
+	<head>
+		<!-- Use Internet Explorer 9 Standards mode for Eclipse Browser Control - https://www.eclipse.org/swt/faq.php#browsernativeie and https://msdn.microsoft.com/en-us/library/jj676915%28v=vs.85%29.aspx -->
+  		<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+		
+		<!-- Next 2 http=equiv headers required to disable caching the Eclipse Browser Widget -->
+		<meta http-equiv="Pragma" content="no-cache">
+  		<meta http-equiv="Expires" content="-1">
+
+		<meta charset="UTF-8"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<meta name="copyright" content="Copyright IBM Corporation 2014" />
+		<meta name="abstract" content="IBM App Connect Enterprise V11 Tutorial">
+		<meta name="author" content="IBM">
+		<meta name="description" content="IBM App Connect Enterprise V11 Tutorial">
+		<meta name="keywords" content="keywords" > 
+		<meta name="robots" content="index,follow">
+		<meta name="source" content="IBM App Connect Enterprise V11 Tutorial" /> 
+		
+		<title>IBM App Connect Enterprise V11 Tutorial</title>
+
+    	<link rel="stylesheet" href="https://ot4i.github.io/iib-tutorials/css/main.css" />
+		<link rel="stylesheet" href="https://ot4i.github.io/iib-tutorials/css/app.css" />
+    	
+		<script src="https://ot4i.github.io/iib-tutorials/js/json2.js"></script>
+		<script src="https://ot4i.github.io/iib-tutorials/js/js2java.js"></script>
+		<script src="https://ot4i.github.io/iib-tutorials/js/js2java_steps.js"></script>
+		<script src="https://ot4i.github.io/iib-tutorials/js/vendor/modernizr.js"></script>
+	</head>
+<!-- header::End -->
+<!-- body::Start -->
+		<body>
+  	<!-- body content here -->
+	<div class="row">
+	  <div class="small-12 medium-12 large-12 columns">
+	    <p> </p>
+	  </div>
+	</div>
+	<div class="row">
+	  <div class="small-9 medium-9 large-9 columns">
+	    <h4 class="title">Aggregation nodes using MQ nodes with back-end services <action><button class="small radius button" tabindex="0" id="stepsViewDetails" onclick="viewDetails()"> View Details</button> </action></h4>
+	  </div>
+	  <div class="small-3 medium-3 large-3 columns">
+		<a href="javascript:;" onclick="openExternalBrowser('https://www.ibm.com/support/knowledgecenter/en/SSTTDS_11.0.0/com.ibm.ace.home.doc/help_home.htm')" class="small right helplink">IBM Knowledge Center</a> 
+	  </div>
+	</div> 
+	<hr>
+	<div class="row">
+		<div class="small-10 medium-10 large-10 columns">
+		<h5> Learn how to use the Aggregation nodes to fan-out and fan-in messages using MQ nodes. </h5>
+		</div>
+		<div class="small-2 medium-2 large-2 columns">
+			<button class="small radius button right" tabindex="0" id="backToGallery" onclick="backToGallery()"> Back To Gallery
+			</button>
+		</div>
+	</div>
+	<div class="row">          
+		  <div class="small-12 medium-12 large-12 columns">
+			<ul class="tabs vertical"> 
+				<li class="tab-title tab-title-small active">
+				  <a href="javascript:;" onclick="show('panel21')">Create</a> 
+				</li>
+				<li class="tab-title tab-title-small">
+				  <a href="javascript:;" onclick="show('panel31')">Prepare</a> 
+				</li>
+				<li class="tab-title tab-title-small">
+				  <a href="javascript:;" onclick="show('panel41')">Run</a> 
+				</li>
+			</ul>
+			<!-- editing -->
+			<div class="tabs-content panel-thin-blue vertical"> 
+		    	<div class="content active" id="panel21">
+		    		
+		    		<div class="small-10 medium-10 large-10 columns divider">
+					
+				      	<div class="row content-details">
+					      	<h4>Import projects</h4>
+					        
+						    
+								<p> When you click Import, three applications will be created in your workspace: <span class="application">AggregationMQ</span>, <span class="application">AggregationMQBackend1</span> and <span class="application">AggregationMQBackend2</span>. </p>
+								
+							
+								<p> <span class="application">AggregationMQ</span> provides two message flows AggregationMQ_FanOut and AggregationMQ_FanIn which use MQ nodes to send messages to and receive messages from the back-end message flows. </p>
+								
+							
+								<p> <span class="application">AggregationMQBackend1</span> provides a single message flow with MQInput, Mapping and MQOutput nodes. The application contains an XML schema describing the input and output formats. </p>
+								
+							
+								<p> <span class="application">AggregationMQBackend2</span> provides a single message flow with MQInput, Mapping and MQOutput nodes. The application contains an XML schema describing the input and output formats. </p>
+								
+							
+								<p> For simplicity, all three applications can be deployed to the same integration server. If you wish, you could deploy AggregationMQBackEnd1 and AggregationMQBackEnd2 to different integration servers (assuming you take account of this with your MQ queue manager configuration). </p>
+								
+							
+								<p> Once you import the tutorial, the provided applications are ready to be deployed and tested. Before you do this, you need to create the required MQ queues, as described on the Prepare tab. </p>
+								
+							
+						</div>
+						
+						<div class="row content-details">
+							<h4>Find out more</h4>
+							<ul>
+							
+								
+								
+								<li> <a href="javascript:;" onclick="openExternalBrowser('https://www.ibm.com/support/knowledgecenter/en/SSTTDS_11.0.0/com.ibm.etools.mft.doc/bi12002_.htm')" title="Knowledge Center link to  Developing integration solutions by using applications">Developing integration solutions by using applications</a> </li>
+									
+							
+							</ul>
+						</div>
+						
+					</div>
+					
+					<div class="small-2 medium-2 large-2 columns">
+					
+					
+					<h4 class="tkaction"><a href="javascript:;" onclick="importArtifacts(); openResource('MainFlow')"> Import <img class="icon-image" src="https://ot4i.github.io/iib-tutorials/images/icons/ibmdesign/back-right-previous_128-orange.png"></a></h4>
+										
+				    </div>
+					
+		    	</div>
+		    	<div class="content" id="panel31">
+					
+					<div class="small-12 medium-12 large-12 columns">
+					
+						<div class="row content-details">
+						  	<h4>Create queues</h4>
+						    
+						    
+								<p> The solution uses IBM MQ queues to route messages between the applications. </p>
+								
+								
+									
+									<ol>
+									
+									
+										<li> Create the default App Connect Enterprise queues in IBM MQ by completing the following steps:
+										
+										
+											
+											<ol>
+											
+												
+													<li> Open the IBM App Connect Enterprise Console. If you don't already have one, create and start a queue manager:<br><code><span class="cmdname">crtmqm</span> <span class="varname"> qmgr</span></code><br><code><span class="cmdname">strmqm</span> <span class="varname"> qmgr</span></code></li>
+												
+													<li> Next create the queues by typing the following command:<br><code>server\sample\wmq\iib_createqueues <span class="varname">qmgr</span></code><br>where<br><span class="varname">qmgr</span> is the queue manager name.</li>
+												
+											
+											</ol>
+											
+										
+										</li>
+									
+										<li> Create the queues used by the MQ nodes in this tutorial by completing the following steps:
+										
+										
+											
+											<ol>
+											
+												
+													<li> In the console window, type the following command:<br><code><span class="cmdname">runmqsc</span> <span class="varname"> qmgr &lt; {WorkspacePath}/AggregationMQ/create_queues.mqsc</span></code><br>where<br><span class="varname">qmgr</span> is the queue manager name and <span class="varname">WorkspacePath</span> is the location of your current Toolkit workspace.</li>
+												
+											
+											</ol>
+											
+										
+										</li>
+									
+										<li> Create an integration node which is associated with the above queue manager by completing the following steps:
+										
+										
+											
+											<ol>
+											
+												
+													<li> In the console window, create an integration node by typing the following command:<br><code><span class="cmdname">mqsicreatebroker</span> <span class="varname">TESTNODE</span> -q <span class="varname">qmgr</span></code></li>
+												
+													<li> Start the integration node by typing the following command:<br><code><span class="cmdname">mqsistart</span> <span class="varname">TESTNODE</span></code></li>
+												
+													<li> Create an integration server associated with the integration node by typing the following command:<br><code><span class="cmdname">mqsicreateexecutiongroup</span> <span class="varname">TESTNODE</span> -e <span class="varname">default</span></code></li>
+												
+											
+											</ol>
+											
+										
+										</li>
+									
+									
+									</ol>
+									
+								
+							
+						</div>
+						
+						<div class="row content-details">
+							<h4></h4>
+							<ul>
+							
+							</ul>
+						</div>
+							
+					</div>
+					
+		    	</div>
+		    	<div class="content" id="panel41">
+		    		
+					<div class="small-12 medium-12 large-12 columns">
+					
+				    	<div class="row content-details">
+					      	<h4></h4>
+					        
+						    
+								<p> <h4>Deploy the back-end MQ applications</h4> </p>
+								
+								
+									
+									<ol>
+									
+									
+										<li> Deploy the <span class="application">AggregationMQBackend1</span> application, by dragging and dropping it on to the integration server (which we named default earlier in the tutorial).
+										
+										</li>
+									
+										<li> Deploy the <span class="application">AggregationMQBackend2</span> application, by dragging and dropping it on to the integration server (which we named default earlier in the tutorial).
+										
+										</li>
+									
+									
+									</ol>
+									
+								
+							
+								<p> <h4>Use the Flow Exerciser to test the tutorial scenario </h4></p>
+								
+								
+									
+									<ol>
+									
+									
+										<li> Open <span class="resource">AggregationMQ_FanIn.msgflow</span>.
+										
+										
+											
+											<ul>
+											
+												
+													<li> Click the Flow Exerciser icon <img src="http://ot4i.github.io/ot4i.tutorials//dist/images/icons/iib/startFlowExerciser.png" alt> to start testing the flow</li>
+												
+											
+											</ul>
+											
+										
+										</li>
+									
+										<li> Open <span class="resource">AggregationMQ_FanOut.msgflow</span>.
+										
+										
+											
+											<ul>
+											
+												
+													<li> Click the Flow Exerciser icon <img src="http://ot4i.github.io/ot4i.tutorials//dist/images/icons/iib/startFlowExerciser.png" alt> to start testing the flow. <strong>WARNING!</strong> When prompted, be careful not to redeploy the message flow as this would accidentally cause the Flow Exerciser to undo the last step and remove <span class="resource">AggregationMQ_FanIn.msgflow</span> from test data capturing mode.</li>
+												
+													<li> Click the Send Message icon <img src="http://ot4i.github.io/ot4i.tutorials/dist/images/icons/iib/sendMessage.png" alt>.</li>
+												
+													<li> Select the saved message which has been provided, named <span class="resource">InputMessage1</span>, and click Send. Your message is sent to the MQInput node.</li>
+												
+													<li> The pop-up dialog will show the message has been sent and will then be reporting <span class="resource">Listening for response</span>, but in this example there is no response message, so just click <span class="resource">Close</span></li>
+												
+													<li> After you close the dialog, the paths taken through the messageflow are highlighted. Click on the message icon on each connection to see how the tree has been updated by each node.</li>
+												
+											
+											</ul>
+											
+										
+										</li>
+									
+										<li> Return to <span class="resource">AggregationMQ_FanIn.msgflow</span>.
+										
+										
+											
+											<ul>
+											
+												
+													<li> Click the View Path icon <img src="http://ot4i.github.io/ot4i.tutorials//dist/images/icons/iib/viewPath.png" alt> to see the path which the message took through the flow and see the message content on the path.</li>
+												
+													<li> Click on the message icon on the last connection in the flow and you should see the final output message carries return data from both of the back-end message flows which has been changed to upper case. The final output message on the output queue <span class="resource">AGG.OUT</span> should look similar to this:</li>
+												
+													<li> <span class="resource">&lt;NS1:OverallOutputMessage xmlns:NS1=&quot;http://www.ibm.com/Example&quot;&gt;&lt;NS1:ResponseBackend1>DATA FOR BACKEND1&lt;/NS1:ResponseBackend1&gt;&lt;NS1:ResponseBackend2>DATA FOR BACKEND2&lt;/NS1:ResponseBackend2&gt;&lt;/NS1:OverallOutputMessage&gt;</span></li>
+												
+											
+											</ul>
+											
+										
+										</li>
+									
+									
+									</ol>
+									
+								
+							
+								<p> This tutorial has shown the Aggregation nodes orchestrating a fan-out and an associated fan-in of messages using MQ. </p>
+								
+							
+						</div>
+						
+						<div class="row content-details"> 	
+							<h4>Find out more</h4>
+							<ul>
+							
+								
+								
+								<li> <a href="javascript:;" onclick="openExternalBrowser('https://www.ibm.com/support/knowledgecenter/en/SSTTDS_11.0.0/com.ibm.etools.mft.doc/ac00660_.htm')" title="Knowledge Center link to  Message Flow Aggregation">Message Flow Aggregation</a> </li>
+									
+							
+								
+								
+								<li> <a href="javascript:;" onclick="openExternalBrowser('https://www.ibm.com/support/knowledgecenter/en/SSTTDS_11.0.0/com.ibm.etools.mft.doc/rt26110_.htm')" title="Knowledge Center link to  Testing your message flow by using the Flow exerciser">Testing your message flow by using the Flow exerciser</a> </li>
+									
+							
+							</ul>
+						</div>
+							
+					</div>
+					
+				</div>	
+			</div> <!-- tab-content -->
+		</div> <!-- columns -->
+	  </div> <!-- row --></body>
+		<script src="https://ot4i.github.io/iib-tutorials/js/vendor/jquery.js"></script>
+		<script src="https://ot4i.github.io/iib-tutorials/js/vendor/foundation.min.js"></script>
+		<script src="https://ot4i.github.io/iib-tutorials/js/main.js"></script>
+	</body>
+<!-- body::End -->
+
+</html>
