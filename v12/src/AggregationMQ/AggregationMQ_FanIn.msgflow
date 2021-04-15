@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ComIbmAggregateReply.msgnode="ComIbmAggregateReply.msgnode" xmlns:ComIbmCompute.msgnode="ComIbmCompute.msgnode" xmlns:ComIbmMQInput.msgnode="ComIbmMQInput.msgnode" xmlns:ComIbmMQOutput.msgnode="ComIbmMQOutput.msgnode" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow="http://www.ibm.com/wbi/2005/eflow" xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility" nsURI="AggregationMQ_FanIn.msgflow" nsPrefix="AggregationMQ_FanIn.msgflow">
-  <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1">
+  <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1" nodeLayoutStyle="RECTANGLE">
     <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
     <translation xmi:type="utility:TranslatableString" key="AggregationMQ_FanIn" bundleName="AggregationMQ_FanIn" pluginId="AggregationMQ"/>
     <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/AggregationMQ/icons/full/obj16/AggregationMQ_FanIn.gif"/>
     <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/AggregationMQ/icons/full/obj30/AggregationMQ_FanIn.gif"/>
     <composition>
-      <nodes xmi:type="ComIbmMQInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="36,62" queueName="BACKEND.REPLY" messageDomainProperty="XMLNSC">
+      <nodes xmi:type="ComIbmMQInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="11,24" queueName="BACKEND.REPLY" messageDomainProperty="XMLNSC">
         <translation xmi:type="utility:ConstantString" string="MQ Input - BACKEND.REPLY"/>
       </nodes>
-      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="396,60" queueName="AGG.OUT">
+      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="629,20" queueName="AGG.OUT">
         <translation xmi:type="utility:ConstantString" string="MQ Output - AGG.OUT"/>
       </nodes>
-      <nodes xmi:type="ComIbmAggregateReply.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="209,58" aggregateName="AggregationMQ" unsolicitedTimeout="0" transactionMode="true">
+      <nodes xmi:type="ComIbmAggregateReply.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="209,20" aggregateName="AggregationMQ" unsolicitedTimeout="0" transactionMode="true">
         <translation xmi:type="utility:ConstantString" string="Aggregate Reply"/>
       </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="321,59" computeExpression="esql://routine/#AggregationMQ_FanIn_Compute.Main">
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="419,20" computeExpression="esql://routine/#AggregationMQ_FanIn_Compute.Main">
         <translation xmi:type="utility:ConstantString" string="Compute"/>
       </nodes>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_4" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
