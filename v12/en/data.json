@@ -65,14 +65,14 @@
             "summary": 
 			{
                 "overviewName": "OVERVIEW",
-                "_overviewComment": "A short description of what happens in this tutorial, and an optional short explanation of the ACE concepts used in this tutorial if necessary for context. What background knowledge must the user have for this to make sense?",
+                "_overviewComment": "A short description of what happens in this tutorial, and an optional short explanation of the concepts used in this tutorial if necessary for context. What background knowledge must the user have for this to make sense?",
                 "sections": 
 				[
                     {
                         "section": "This tutorial demonstrates a simple message flow that receives an MQ message, and fans-out two separate MQ request messages (after simple transformations using a Mapping node). Two separate example back-end message flows are provided which read these MQ requests and reply to a common response queue. Finally, a separate fan-in message flow aggregates the two response messages."
                     },
                     {
-                        "section": "This tutorial requires an ACE integration node (or standalone server) which is associated with a local queue manager."
+                        "section": "This tutorial requires an integration node (or standalone server) which is associated with a local queue manager."
                     },
                     {
                         "section": "In IBM App Connect Enterprise, an application is a container for all the resources that are required to create a solution. This tutorial provides three applications - one to hold the fan-out and fan-in aggregation flows, and two other applications for the back-end MQ flows."
